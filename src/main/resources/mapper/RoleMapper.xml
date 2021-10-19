@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lixiang.mapper.RoleMapper">
+  <resultMap id="BaseResultMap" type="com.lixiang.pojo.Role">
+    <!--@mbg.generated-->
+    <!--@Table `role`-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="role_code" jdbcType="VARCHAR" property="roleCode" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
+    <result column="creator" jdbcType="TIMESTAMP" property="creator" />
+    <result column="edited" jdbcType="TIMESTAMP" property="edited" />
+    <result column="editor" jdbcType="TIMESTAMP" property="editor" />
+    <result column="deleted" jdbcType="INTEGER" property="deleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, role_code, `name`, created, creator, edited, editor, deleted
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from `role`
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from `role`
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.lixiang.pojo.Role" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into `role` (role_code, `name`, created, 
+      creator, edited, editor, 
+      deleted)
+    values (#{roleCode,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{created,jdbcType=TIMESTAMP}, 
+      #{creator,jdbcType=TIMESTAMP}, #{edited,jdbcType=TIMESTAMP}, #{editor,jdbcType=TIMESTAMP}, 
+      #{deleted,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.lixiang.pojo.Role" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into `role`
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roleCode != null">
+        role_code,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="edited != null">
+        edited,
+      </if>
+      <if test="editor != null">
+        editor,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="roleCode != null">
+        #{roleCode,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=TIMESTAMP},
+      </if>
+      <if test="edited != null">
+        #{edited,jdbcType=TIMESTAMP},
+      </if>
+      <if test="editor != null">
+        #{editor,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lixiang.pojo.Role">
+    <!--@mbg.generated-->
+    update `role`
+    <set>
+      <if test="roleCode != null">
+        role_code = #{roleCode,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null">
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=TIMESTAMP},
+      </if>
+      <if test="edited != null">
+        edited = #{edited,jdbcType=TIMESTAMP},
+      </if>
+      <if test="editor != null">
+        editor = #{editor,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lixiang.pojo.Role">
+    <!--@mbg.generated-->
+    update `role`
+    set role_code = #{roleCode,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
+      created = #{created,jdbcType=TIMESTAMP},
+      creator = #{creator,jdbcType=TIMESTAMP},
+      edited = #{edited,jdbcType=TIMESTAMP},
+      editor = #{editor,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
