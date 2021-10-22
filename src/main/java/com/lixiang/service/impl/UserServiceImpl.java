@@ -1,8 +1,6 @@
 package com.lixiang.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lixiang.mapper.UserInfoMapper;
@@ -10,17 +8,14 @@ import com.lixiang.mapper.UserRoleMapper;
 import com.lixiang.pojo.Role;
 import com.lixiang.pojo.UserInfo;
 import com.lixiang.pojo.UserRole;
-import com.lixiang.service.UserRoleService;
-import com.lixiang.vo.ResultVo;
 import com.lixiang.vo.UserAndRoleVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.lixiang.mapper.UserMapper;
+import com.lixiang.mapper.UserMapperr;
 import com.lixiang.pojo.User;
 import com.lixiang.service.UserService;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Date;
 import java.util.List;
@@ -34,10 +29,10 @@ import java.util.Map;
 
 @Service
 @Slf4j
-public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
+public class UserServiceImpl extends ServiceImpl<UserMapperr, User> implements UserService {
 
     @Autowired
-    UserMapper userMapper;
+    UserMapperr userMapper;
     @Autowired
     UserInfoMapper userInfoMapper;
     @Autowired

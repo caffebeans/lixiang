@@ -1,13 +1,14 @@
 package com.lixiang.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.lixiang.mapper.UserMapper;
+import com.lixiang.mapper.UserMapperr;
 import com.lixiang.pojo.User;
+import com.lixiang.vo.ResultCode;
 import com.lixiang.vo.ResultVo;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -19,13 +20,15 @@ import java.util.Map;
  **/
 @RestController
 @Slf4j
+@Api(tags="登陆管理")
 public class LoginController {
 
      @Autowired
-     UserMapper userMapper;
+     UserMapperr userMapper;
 
      @PostMapping("/login")
-     public ResultVo login(@RequestParam Map<String,String> map){
+     @ApiOperation("登陆接口")
+     public ResultVo login(@RequestBody Map<String,String> map){
 
         map.keySet().forEach(System.out::println);
 
@@ -34,16 +37,16 @@ public class LoginController {
          User user = new User();
          user.setLoginName(map.get("username"));
          user.setPassword(map.get("password"));
-         user.setStatus(1);
+
          try{
-             User ans = userMapper.selectOne(new QueryWrapper<>(user));
-             System.out.println(ans);
-
+             user = userMapper.selectOne(new QueryWrapper<>(user));
          }catch(Exception e){
-
+              return ResultVo.ERROR();
          }
 
-         return ResultVo.SUCCESS();
+         return user==null?ResultVo.ERROR(ResultCode.USER_NO_EXIST):ResultVo.SUCCESS(user.getLoginName());
+
+
 
      }
 

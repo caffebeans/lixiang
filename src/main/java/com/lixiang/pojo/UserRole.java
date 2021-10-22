@@ -12,6 +12,7 @@ import lombok.Data;
  * @date:  2021/10/19
  **/
 @Data
+@TableName("user_role")
 public class UserRole {
 
     @TableId(value = "id",type = IdType.AUTO)

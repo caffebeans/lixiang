@@ -1,19 +1,15 @@
 package com.lixiang.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.lixiang.mapper.UserMapper;
-import com.lixiang.pojo.User;
+import com.lixiang.mapper.UserMapperr;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import javax.annotation.Resource;
 import com.lixiang.mapper.UserInfoMapper;
 import com.lixiang.pojo.UserInfo;
 import com.lixiang.service.UserInfoService;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.security.Timestamp;
-import java.util.Date;
 import java.util.Map;
 
 /**
@@ -28,7 +24,7 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper,UserInfo> im
      @Autowired
      UserInfoMapper userInfoMapper;
      @Autowired
-    UserMapper userMapper;
+     UserMapperr userMapper;
 
      @Override
      @Transactional

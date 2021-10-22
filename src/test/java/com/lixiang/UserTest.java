@@ -4,7 +4,11 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lixiang.mapper.RoleMapper;
 import com.lixiang.mapper.UserInfoMapper;
+import com.lixiang.mapper.UserMapperr;
+import com.lixiang.pojo.User;
 import com.lixiang.pojo.UserInfo;
+import com.lixiang.vo.ResultCode;
+import com.lixiang.vo.ResultVo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -19,15 +23,16 @@ public class UserTest extends LixiangApplicationTests{
 
      @Autowired
      UserInfoMapper userInfoMapper;
+     @Autowired
+     UserMapperr userMapperr;
+
     @Test
     void name() {
-        Page<UserInfo> page = new Page<> (1,1);
-        //查询第pageNum页，每页pageSize条数据
-//将分页参数page作为Mybatis或Mybatis Plus的第一个参数传入持久层函数，即可完成分页查询
 
-        page=userInfoMapper.selectPage(page, null );
-
-
+        User user = new User();
+        user.setLoginName("zhang");
+        user.setPassword("hello");
+        userMapperr.insert(user);
 
     }
 

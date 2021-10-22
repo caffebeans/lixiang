@@ -11,10 +11,14 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class ResultVo {
-     private Integer code;
+     private int code;
      private String msg;
      private Object data;
 
+
+    public ResultVo() {
+
+    }
     public ResultVo(ResultCode resultCode,Object data) {
         this.code=resultCode.getCode();
         this.msg=resultCode.getMsg();
@@ -26,20 +30,23 @@ public class ResultVo {
     }
 
     public static ResultVo SUCCESS(){
-         ResultVo resultVo = new ResultVo(ResultCode.SUCCESS);
+         ResultVo resultVo = new ResultVo();
          resultVo.setCode(200);
          resultVo.setMsg("ok");
          return resultVo;
     }
 
     public static ResultVo SUCCESS(Object data){
-        ResultVo resultVo = new ResultVo(ResultCode.SUCCESS);
+        ResultVo resultVo = new ResultVo();
+        resultVo.setCode(200);
         resultVo.setData(data);
         return resultVo;
     }
 
     public static ResultVo ERROR(){
-        ResultVo resultVo = new ResultVo(ResultCode.ERROR);
+        ResultVo resultVo = new ResultVo();
+        resultVo.setCode(500);
+        resultVo.setMsg("服务器发生错误，请联系管理员");
         return resultVo;
     }
 

@@ -1,6 +1,8 @@
 package com.lixiang.pojo;
 
 import java.util.Date;
+
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 /**

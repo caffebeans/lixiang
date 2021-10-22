@@ -1,13 +1,15 @@
 package com.lixiang.vo;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @description:
  * @author: 苏铭
  * @date: 2021/10/19
  **/
-
+@Getter
 public enum ResultCode {
 
     SUCCESS(200, "请求成功"),
@@ -17,25 +19,13 @@ public enum ResultCode {
     ROLE_UPDATE_ERROR(2001, "角色更新错误"),
     ROLE_DEL_ERROR(2001, "角色删除错误");
 
-    private Integer code;
+    private int code;
     private String msg;
 
     ResultCode(int code, String msg) {
+        this.code=code;
+        this.msg=msg;
     };
 
-    public Integer getCode() {
-        return code;
-    }
 
-    public void setCode(Integer code) {
-        this.code = code;
-    }
-
-    public String getMsg() {
-        return msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
 }

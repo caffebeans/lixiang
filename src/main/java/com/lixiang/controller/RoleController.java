@@ -6,6 +6,8 @@ import com.lixiang.pojo.User;
 import com.lixiang.service.RoleService;
 import com.lixiang.vo.ResultCode;
 import com.lixiang.vo.ResultVo;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,12 +24,14 @@ import java.util.Map;
 @RestController
 @RequestMapping("/v1/role")
 @Slf4j
+@Api(tags="角色管理")
 public class RoleController {
 
      @Autowired
      RoleService roleService;
 
      @RequestMapping("/")
+     @ApiOperation("分页查询数据")
     public ResultVo list(){
          log.info("查看所有的角色");
          List<Role> roles = roleService.list(null);

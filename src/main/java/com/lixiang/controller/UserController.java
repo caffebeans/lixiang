@@ -1,24 +1,18 @@
 package com.lixiang.controller;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.lixiang.mapper.UserMapper;
-import com.lixiang.pojo.Role;
-import com.lixiang.pojo.User;
+import com.lixiang.mapper.UserMapperr;
 import com.lixiang.pojo.UserInfo;
 import com.lixiang.service.UserInfoService;
 import com.lixiang.service.UserService;
 import com.lixiang.vo.ResultCode;
 import com.lixiang.vo.ResultVo;
 import com.lixiang.vo.UserAndRoleVo;
+import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.ibatis.annotations.One;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -30,6 +24,7 @@ import java.util.Map;
 @RestController
 @Slf4j
 @RequestMapping("/v1/user")
+@Api(tags="用户管理")
 public class UserController {
 
       @Autowired
@@ -37,7 +32,7 @@ public class UserController {
       @Autowired
       UserService userService;
       @Autowired
-      UserMapper userMapper;
+      UserMapperr userMapper;
 
     @GetMapping("/")
     public ResultVo list(@RequestParam Map<String,String> map){

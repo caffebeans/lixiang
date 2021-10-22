@@ -13,7 +13,7 @@ import lombok.Data;
  * @date:  2021/10/19
  **/
 @Data
-@TableName("t_user_info")
+@TableName("user_info")
 public class UserInfo {
     /**
     * 自增主键
