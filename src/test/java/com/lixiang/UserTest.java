@@ -36,5 +36,19 @@ public class UserTest extends LixiangApplicationTests{
 
     }
 
+    @Test
+    void add() {
+
+        UserInfo info = new UserInfo();
+
+        info.setLoginName("zhang");
+       info.setUsername("z");
+       userInfoMapper.insert(info);
+
+    }
+
+
+
+
 
 }
