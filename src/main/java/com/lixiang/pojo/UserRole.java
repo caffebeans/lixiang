@@ -1,10 +1,11 @@
 package com.lixiang.pojo;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 /**
  * @description:
- * @author: 张亮
+ * @author: 苏铭
  * @date:  2021/10/19
  **/
 @Data
@@ -20,4 +21,6 @@ public class UserRole {
     * 角色id
     */
     private Long roleId;
+
+
 }

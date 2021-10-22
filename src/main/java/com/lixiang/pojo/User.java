@@ -1,10 +1,12 @@
 package com.lixiang.pojo;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
 /**
  * @description:
- * @author: 张亮
+ * @author: 苏铭
  * @date:  2021/10/19
  **/
 /**
@@ -15,6 +17,7 @@ public class User {
     /**
     * 唯一索引
     */
+    @TableId(value = "id",type = IdType.AUTO)
     private Integer id;
 
     /**
@@ -26,4 +29,7 @@ public class User {
     * 密码
     */
     private String password;
+
+
+    private Integer status;
 }

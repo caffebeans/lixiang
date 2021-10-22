@@ -1,14 +1,17 @@
 package com.lixiang.pojo;
 
 import java.util.Date;
+
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 /**
  * @description:
- * @author: 张亮
+ * @author: 苏铭
  * @date:  2021/10/19
  **/
 @Data
+@TableName("t_user_info")
 public class UserInfo {
     /**
     * 自增主键
@@ -38,7 +41,7 @@ public class UserInfo {
     /**
     * 性别
     */
-    private String gender;
+    private Integer gender;
 
     /**
     * 电话
@@ -53,6 +56,7 @@ public class UserInfo {
     /**
     * 创建时间
     */
+
     private Date created;
 
     /**
@@ -73,5 +77,5 @@ public class UserInfo {
     /**
     * 状态 0-无效
     */
-    private Short status;
+    private Integer status;
 }

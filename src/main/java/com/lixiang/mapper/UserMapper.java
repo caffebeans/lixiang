@@ -1,12 +1,15 @@
 package com.lixiang.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.lixiang.pojo.User;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * @description:
- * @author: 张亮
+ * @author: 苏铭
  * @date:  2021/10/19
  **/
-public interface UserMapper {
+@Mapper
+public interface UserMapper extends BaseMapper<User> {
 
 }
