@@ -11,7 +11,9 @@ import com.lixiang.service.UserInfoService;
 import com.lixiang.service.UserService;
 import com.lixiang.vo.ResultCode;
 import com.lixiang.vo.ResultVo;
+import com.lixiang.vo.UserAndRoleVo;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.annotations.One;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -41,6 +43,7 @@ public class UserController {
     public ResultVo list(@RequestParam Map<String,String> map){
 
         Object o = userService.pageSearch(map);
+
         return ResultVo.SUCCESS(o);
     }
 
@@ -73,6 +76,28 @@ public class UserController {
 
         return res?ResultVo.SUCCESS():ResultVo.ERROR(ResultCode.ROLE_DEL_ERROR);
     }
+
+    @GetMapping("/searchByUserNameOrId")
+    @Transactional
+    public ResultVo searchByUserNameOrId(@RequestParam Map<String,String> map){
+
+        List<UserInfo> list = userService.searchByUserNameOrID(map);
+        if (list.size()==0) return ResultVo.SUCCESS();
+
+        return ResultVo.SUCCESS(list).setCode(200);
+    }
+
+    @PostMapping("/editUserRole")
+    public ResultVo editUserRole(@RequestBody UserAndRoleVo userAndRoleVo){
+//       List<Role> roleList= (List<Role>) map.get("roles");
+
+        log.info("编辑用户的角色");
+        boolean res=false;
+        res = userService.editUserRole(userAndRoleVo);
+
+        return res?ResultVo.SUCCESS():ResultVo.ERROR(ResultCode.ROLE_UPDATE_ERROR);
+    }
+
 
 
 

@@ -1,12 +1,18 @@
 package com.lixiang.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lixiang.mapper.UserInfoMapper;
+import com.lixiang.mapper.UserRoleMapper;
+import com.lixiang.pojo.Role;
 import com.lixiang.pojo.UserInfo;
+import com.lixiang.pojo.UserRole;
+import com.lixiang.service.UserRoleService;
 import com.lixiang.vo.ResultVo;
+import com.lixiang.vo.UserAndRoleVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,6 +40,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     UserMapper userMapper;
     @Autowired
     UserInfoMapper userInfoMapper;
+    @Autowired
+    UserRoleMapper userRoleMapper;
 
     @Override
     @Transactional
@@ -95,18 +103,64 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Override
     public Object pageSearch(Map<String, String> map) {
 
-        int pagesize=Integer.valueOf(map.get("currentPageSize"));
-        int pagesNumber=Integer.valueOf(map.get("page"));
-        IPage<UserInfo> userIPage = new Page<>(pagesize,pagesNumber);
-        //IPage 对象中有很多属性，下面举例几个最常用的
-        System.out.println("总记录数：" + userIPage.getTotal());
-        System.out.println("总页数：" + userIPage.getPages());
-        System.out.println("当前页面大小：" + userIPage.getSize());
-        System.out.println("当前页码：" + userIPage.getCurrent());
-        //最重要的  =>  取出查询到的数据
-        System.out.println(" ===============   数据   =================");
-        List<UserInfo> records = userIPage.getRecords();
-        records.forEach(System.out::println);
-        return  records;
+        int pagesize = Integer.valueOf(map.get("currentPageSize"));
+        int pagesNumber = Integer.valueOf(map.get("page"));
+
+
+
+        Page<UserInfo> page = new Page<> (pagesNumber,pagesize);
+
+        page=userInfoMapper.selectPage(page, null );
+        return page;
+
+    }
+
+    /**
+     *
+     * @param map(传递过来的可能是用户名或者idcar)
+     * @return
+     */
+    @Override
+    public List<UserInfo> searchByUserNameOrID(Map<String, String> map) {
+        log.info("根据用户名或者id进行查询");
+        map.keySet().forEach(System.out::println);
+
+        UserInfo userInfo = new UserInfo();
+        UserInfo one;
+        if (map.containsKey("userName")&&map.get("userName").trim()!="") userInfo.setUsername(map.get("userName"));
+        if (map.containsKey("idCard")&&map.get("idCard").trim()!="") userInfo.setIdCard(map.get("idCard"));
+
+        List<UserInfo> list=null;
+
+        try{
+            list = userInfoMapper.selectList(new QueryWrapper<>(userInfo));
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    @Override
+    @Transactional
+    public boolean editUserRole(UserAndRoleVo userAndRoleVo) {
+
+        UserInfo user = userAndRoleVo.getUser();
+        List<Role> roles = userAndRoleVo.getRoles();
+
+        try{
+            roles.stream().forEach(x->{
+                System.out.println("****************************************");
+                Long id = x.getId();
+                UserRole userRole = new UserRole();
+                userRole.setRoleId(id);
+                userRole.setUserId(user.getId());
+                userRoleMapper.insert(userRole);
+            });
+        }catch(Exception e){
+                e.printStackTrace();
+        }
+
+
+        return false;
     }
 }

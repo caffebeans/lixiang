@@ -54,4 +54,17 @@ public class ResultVo {
         resultVo.setData(data);
         return resultVo;
     }
+
+    public ResultVo setCode(Integer code) {
+        this.code = code;
+        return this;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    public void setData(Object data) {
+        this.data = data;
+    }
 }
