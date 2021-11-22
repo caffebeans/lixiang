@@ -20,9 +20,7 @@ public class RoleTest extends LixiangApplicationTests{
 
     @Test
     void add() {
-
         Role role = new Role();
-        role.setName("zhnag");
-        roleMapper.insert(role);
+        roleMapper.selectList(null).forEach(System.out::println);
     }
 }

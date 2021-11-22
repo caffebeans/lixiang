@@ -1,6 +1,9 @@
 package com.lixiang.config;
 
+import com.lixiang.interceptor.LoginIntercepor;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  * @description:
@@ -9,7 +12,12 @@ import org.springframework.context.annotation.Configuration;
  **/
 
 @Configuration
-public class WebConfig {
+public class WebConfig implements WebMvcConfigurer {
 
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+
+        registry.addInterceptor(new LoginIntercepor()).addPathPatterns("/**").excludePathPatterns("/login");
+    }
 
 }

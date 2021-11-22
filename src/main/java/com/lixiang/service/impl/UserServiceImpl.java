@@ -101,8 +101,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapperr, User> implements U
         int pagesize = Integer.valueOf(map.get("currentPageSize"));
         int pagesNumber = Integer.valueOf(map.get("page"));
 
-
-
         Page<UserInfo> page = new Page<> (pagesNumber,pagesize);
 
         page=userInfoMapper.selectPage(page, null );

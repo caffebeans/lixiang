@@ -30,7 +30,7 @@ public class LoginController {
      @ApiOperation("登陆接口")
      public ResultVo login(@RequestBody Map<String,String> map){
 
-        map.keySet().forEach(System.out::println);
+
 
          log.info("用户进行登陆~~~~");
          map.keySet().forEach(System.out::println);
