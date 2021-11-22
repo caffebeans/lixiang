@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lixiang.mapper.UserInfoMapper">
+  <resultMap id="BaseResultMap" type="com.lixiang.pojo.UserInfo">
+    <!--@mbg.generated-->
+    <!--@Table t_user_info-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="login_name" jdbcType="VARCHAR" property="loginName" />
+    <result column="id_card" jdbcType="VARCHAR" property="idCard" />
+    <result column="gender" jdbcType="VARCHAR" property="gender" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="edited" jdbcType="TIMESTAMP" property="edited" />
+    <result column="editor" jdbcType="VARCHAR" property="editor" />
+    <result column="status" jdbcType="SMALLINT" property="status" />
+  </resultMap>
+
+</mapper>
