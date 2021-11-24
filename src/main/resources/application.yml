@@ -3,6 +3,8 @@ server:
 
 
 
+
+
 spring:
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/lixiang?characterEncoding=utf-8&serverTimezone=GMT%2B8
@@ -12,6 +14,11 @@ spring:
   redis:
     port: 6379
     host: localhost
+  rabbitmq:
+    host: 110.40.158.79
+    port: 5672
+    username: root
+    password: zhangliang2012
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml    # mapper映射文件位置
