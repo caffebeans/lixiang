@@ -1,5 +1,6 @@
 package com.lixiang.controller;
 
+import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.lixiang.mapper.UserMapperr;
 import com.lixiang.pojo.UserInfo;
 import com.lixiang.service.UserInfoService;
@@ -8,11 +9,18 @@ import com.lixiang.vo.ResultCode;
 import com.lixiang.vo.ResultVo;
 import com.lixiang.vo.UserAndRoleVo;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.validator.constraints.Range;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import reactor.util.annotation.Nullable;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import java.util.List;
 import java.util.Map;
 
@@ -24,7 +32,8 @@ import java.util.Map;
 @RestController
 @Slf4j
 @RequestMapping("/v1/user")
-@Api(tags="用户管理")
+@Api(tags="用户管理",description = "用来对用户进行增管理")
+@Validated
 public class UserController {
 
       @Autowired
@@ -35,14 +44,27 @@ public class UserController {
       UserMapperr userMapper;
 
     @GetMapping("/")
+    @ApiOperation("查询所有用户的信息")
+    @ApiOperationSupport(author = "张亮")
     public ResultVo list(@RequestParam Map<String,String> map){
-
         Object o = userService.pageSearch(map);
-
         return ResultVo.SUCCESS(o);
     }
 
+    @GetMapping("/page")
+    @ApiImplicitParam(name = "pageNo",value = "当前页数",required = true)
+    @ApiOperation("分页查询")
+    public ResultVo pageList(@Range(min = 0,max = Integer.MAX_VALUE/2) Integer pageNo, @Min(1) @Max(1000) Integer pageSize){
+
+        System.out.println("****************************************");
+        System.out.println("分页查询 ");
+        System.out.println(pageNo);
+        System.out.println(pageSize);
+        return ResultVo.SUCCESS();
+    }
+
     @PostMapping("/add")
+    @ApiOperation("新增用户")
     public ResultVo post(@RequestBody Map<String,String> map){
         log.info("添加用户");
         boolean res=false;
@@ -51,7 +73,9 @@ public class UserController {
     }
 
 
-    @RequestMapping("/update")
+    @PostMapping(value = "/update")
+    @ApiOperation("更新用户")
+    @ModelAttribute
     public ResultVo update(@RequestBody UserInfo userInfo){
         log.info("更新用户");
         boolean res;

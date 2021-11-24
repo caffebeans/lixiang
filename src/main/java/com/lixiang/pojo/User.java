@@ -4,6 +4,7 @@ package com.lixiang.pojo;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import io.swagger.annotations.ApiModel;
 import lombok.Data;
 
 /**
@@ -15,6 +16,7 @@ import lombok.Data;
     * user
     */
 @Data
+@ApiModel("登陆用户")
 public class User {
     /**
     * 唯一索引

@@ -1,5 +1,6 @@
 package com.lixiang.controller;
 
+import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.lixiang.mapper.RoleMapper;
 import com.lixiang.pojo.Role;
 import com.lixiang.pojo.User;
@@ -32,12 +33,13 @@ public class RoleController {
 
      @RequestMapping("/")
      @ApiOperation("分页查询数据")
+     @ApiOperationSupport(order = 1)
     public ResultVo list(){
          log.info("查看所有的角色");
          List<Role> roles = roleService.list(null);
          return ResultVo.SUCCESS(roles);
      }
-
+    @ApiOperationSupport(order = 2)
     @PostMapping("/add")
     public ResultVo post(@RequestBody Role role){
         log.info("添加角色");
@@ -53,7 +55,7 @@ public class RoleController {
         return res?ResultVo.SUCCESS():ResultVo.ERROR(ResultCode.ROLE_UPDATE_ERROR);
     }
 
-
+    @ApiOperationSupport(order = 3)
     @RequestMapping("/update")
     public ResultVo update(@RequestBody Role role){
         log.info("更新角色");
@@ -66,7 +68,9 @@ public class RoleController {
         return res?ResultVo.SUCCESS():ResultVo.ERROR(ResultCode.ROLE_UPDATE_ERROR);
     }
 
+    @ApiOperationSupport(order = 4)
     @GetMapping("/del")
+    @ApiOperation("编辑用户")
     public ResultVo del(@RequestParam Map<String,String> map){
 
         log.info("删除角色");

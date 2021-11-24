@@ -1,5 +1,6 @@
 package com.lixiang.vo;
 
+import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -10,6 +11,7 @@ import lombok.Data;
  **/
 @Data
 @AllArgsConstructor
+@ApiModel("后台统一返回视图")
 public class ResultVo {
      private int code;
      private String msg;

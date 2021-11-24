@@ -2,14 +2,16 @@ package com.lixiang.controller;
 
 import com.lixiang.service.MessageService;
 import com.lixiang.vo.ResultVo;
-import io.swagger.annotations.Api;
+import io.swagger.annotations.*;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.util.annotation.Nullable;
 import springfox.documentation.spring.web.json.Json;
 
 import javax.annotation.Resource;
@@ -22,7 +24,7 @@ import java.util.Random;
  **/
 @RestController
 @RequestMapping("/message")
-@Api("平台短信接口")
+@Api(tags = "信息发送接口")
 @Data
 public class MessageController {
 
@@ -32,8 +34,14 @@ public class MessageController {
     RedisTemplate<String,String> redisUtil;
 
 
-    @RequestMapping("/send")
-    public ResultVo send(@RequestBody String phoneNum){
+    @ApiOperation("发送手机验证码")
+    @PostMapping("/phoneNumber/send")
+    @ApiParam(name = "phoneNum", value = "手机号码",required = true)
+    @ApiResponses(value = {@ApiResponse(code = 10001, message = "手机号码不存在"),
+            @ApiResponse(code = 10001, message = "手机号码不存在")
+       }
+    )
+    public ResultVo send(@RequestBody @Nullable String phoneNum){
         /**
          * @des： 限定信息的发送次数，有设置短信的有效期，
          * 短信的随机数给出

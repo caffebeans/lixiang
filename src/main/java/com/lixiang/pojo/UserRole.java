@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import io.swagger.annotations.ApiModel;
 import lombok.Data;
 
 /**
@@ -13,6 +14,7 @@ import lombok.Data;
  **/
 @Data
 @TableName("user_role")
+@ApiModel("用户角色表")
 public class UserRole {
 
     @TableId(value = "id",type = IdType.AUTO)

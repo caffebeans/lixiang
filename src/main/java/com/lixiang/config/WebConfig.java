@@ -6,7 +6,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
- * @description:
+ * @description:  springmvc的相关配置
  * @author: 张亮
  * @date: 2021/10/22
  **/
@@ -16,7 +16,6 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-
         registry.addInterceptor(new LoginIntercepor()).addPathPatterns("/**").excludePathPatterns("/login");
     }
 

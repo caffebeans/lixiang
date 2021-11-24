@@ -20,8 +20,20 @@ public class RabbitPhoneNumberHandle {
     @RabbitListener(queues = "phoneCode_send")//监听的队列名称 TestDirectQueue
     public void process(String s) {
         System.out.println("DirectReceiver消费者收到消息 "+s);
-
     }
 
-
+    @RabbitHandler
+    @RabbitListener(queues = "phoneCode")//监听的队列名称 TestDirectQueue
+    public void processPhoneNumberCode(String s) {
+        for (int i = 0; i < 10; i++) {
+            new Thread(()->{
+                try {
+                    Thread.currentThread().sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("有手机验证码要发送"+s);
+            }).start();
+        }
+    }
 }

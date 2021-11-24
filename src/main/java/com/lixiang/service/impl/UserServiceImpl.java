@@ -98,8 +98,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapperr, User> implements U
     @Override
     public Object pageSearch(Map<String, String> map) {
 
-        int pagesize = Integer.valueOf(map.get("currentPageSize"));
-        int pagesNumber = Integer.valueOf(map.get("page"));
+        int pagesize = Integer.valueOf(map.get("pageSize"));
+        int pagesNumber = Integer.valueOf(map.get("pageNo"));
 
         Page<UserInfo> page = new Page<> (pagesNumber,pagesize);
 
