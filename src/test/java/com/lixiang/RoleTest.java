@@ -1,7 +1,7 @@
 package com.lixiang;
 
 import com.lixiang.mapper.RoleMapper;
-import com.lixiang.pojo.Role;
+import com.lixiang.po.Role;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -2,7 +2,7 @@ package com.lixiang.controller;
 
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.lixiang.mapper.UserMapperr;
-import com.lixiang.pojo.UserInfo;
+import com.lixiang.po.UserInfo;
 import com.lixiang.service.UserInfoService;
 import com.lixiang.service.UserService;
 import com.lixiang.vo.ResultCode;
@@ -17,7 +17,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import reactor.util.annotation.Nullable;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;

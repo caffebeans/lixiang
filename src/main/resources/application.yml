@@ -5,7 +5,7 @@ spring:
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/lixiang?characterEncoding=utf-8&serverTimezone=GMT%2B8
     username: root
-    password: 123456
+    password: zhangliang2012
     driver-class-name: com.mysql.cj.jdbc.Driver
   redis:
     port: 6379
@@ -27,6 +27,8 @@ logging:
     com.lixiang.mapper: debug
 
 
+# swagger 与  knife4j 界面
+
 knife4j:
   enable: true
   setting:
@@ -35,3 +37,18 @@ knife4j:
     footerCustomContent: Apache License
     enableSwaggerModels: true
     swaggerModelName: 我的模型
+
+# 阿里云短信配置
+aliyun:
+  message:
+    accesskeyId: 12
+    accessKeySecret: 12
+    regionId: 14
+    templateCode: 15
+
+
+#    shiro配置
+shiro:
+  web:
+    enabled: true
+  loginUrl: /login

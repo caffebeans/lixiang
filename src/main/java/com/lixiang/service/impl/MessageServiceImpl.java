@@ -7,19 +7,28 @@ import com.aliyuncs.IAcsClient;
 import com.aliyuncs.exceptions.ClientException;
 import com.aliyuncs.http.MethodType;
 import com.aliyuncs.profile.DefaultProfile;
-import com.lixiang.service.MessageService;
+import com.lixiang.service.PhoneMessageService;
+import com.lixiang.vo.PhoneVerityVo;
+import lombok.Data;
 import org.springframework.stereotype.Service;
 
 /**
  * @description: 完成短信服务
+ *               在发送短信的过程中，包括一系列的过程，
+ *               因此可以将这个过程封装成一个模板方法
  * @author: 张亮
  * @date: 2021/11/22
  **/
 @Service
-public class MessageServiceImpl implements MessageService {
+@Data
+public class MessageServiceImpl implements PhoneMessageService {
+
+
+
 
     @Override
     public String sendMessage(String phone, String code) {
+
         CommonResponse response = null;
         String accesskeyId = "LTAI5tBvQqoJ8kP13xquAKn6";
         String accessKeySecret="lsH898eIIkzMN6cYzVRgcNptBBoyGF";
@@ -46,9 +55,16 @@ public class MessageServiceImpl implements MessageService {
         return response.getHttpResponse().toString();
     }
 
+    /**
+     *
+     * @param phoneVerityVo
+     * @return 验证手机号码
+     */
     @Override
-    public String verifyCode(String phone, String code) {
-        return null;
+    public boolean verifyCode(PhoneVerityVo phoneVerityVo) {
+
+
+        return true;
     }
 
 }

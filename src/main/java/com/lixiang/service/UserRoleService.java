@@ -1,7 +1,7 @@
 package com.lixiang.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.lixiang.pojo.UserRole;
+import com.lixiang.po.UserRole;
     /**
  * @description:
  * @author: 张亮

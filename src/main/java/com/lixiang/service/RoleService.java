@@ -1,8 +1,7 @@
 package com.lixiang.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.lixiang.mapper.RoleMapper;
-import com.lixiang.pojo.Role;
+import com.lixiang.po.Role;
     /**
  * @description:
  * @author: 张亮

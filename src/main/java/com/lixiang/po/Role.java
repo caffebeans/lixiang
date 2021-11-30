@@ -1,8 +1,7 @@
-package com.lixiang.pojo;
+package com.lixiang.po;
 
 import java.util.Date;
 
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

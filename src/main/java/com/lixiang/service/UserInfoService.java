@@ -1,9 +1,7 @@
 package com.lixiang.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.lixiang.mapper.UserInfoMapper;
-import com.lixiang.pojo.UserInfo;
+import com.lixiang.po.UserInfo;
 
 import java.util.Map;
 

@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.lixiang.mapper.UserInfoMapper;
-import com.lixiang.pojo.UserInfo;
+import com.lixiang.po.UserInfo;
 import com.lixiang.service.UserInfoService;
 import org.springframework.transaction.annotation.Transactional;
 

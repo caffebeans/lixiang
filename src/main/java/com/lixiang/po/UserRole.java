@@ -1,5 +1,4 @@
-package com.lixiang.pojo;
-
+package com.lixiang.po;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -12,28 +11,23 @@ import lombok.Data;
  * @author: 张亮
  * @date:  2021/10/19
  **/
-/**
-    * user
-    */
 @Data
-@ApiModel("登陆用户")
-public class User {
-    /**
-    * 唯一索引
-    */
+@TableName("user_role")
+@ApiModel("用户角色表")
+public class UserRole {
+
     @TableId(value = "id",type = IdType.AUTO)
-    private Integer id;
+    private Long id;
 
     /**
-    * 登陆名
+    * 用户id
     */
-    private String loginName;
+    private Long userId;
 
     /**
-    * 密码
+    * 角色id
     */
-    private String password;
+    private Long roleId;
 
 
-    private Integer status;
 }

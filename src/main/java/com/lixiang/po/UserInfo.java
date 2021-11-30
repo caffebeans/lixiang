@@ -1,4 +1,4 @@
-package com.lixiang.pojo;
+package com.lixiang.po;
 
 import java.util.Date;
 

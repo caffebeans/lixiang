@@ -1,8 +1,8 @@
 package com.lixiang.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.lixiang.pojo.User;
-import com.lixiang.pojo.UserInfo;
+import com.lixiang.po.User;
+import com.lixiang.po.UserInfo;
 import com.lixiang.vo.UserAndRoleVo;
 
 import java.util.List;
@@ -14,6 +14,9 @@ import java.util.Map;
  * @date: 2021/10/19
  **/
 public interface UserService extends IService<User> {
+
+
+    User login(User user);
 
     //根据id 禁止用户登录
     boolean banUserLoginName(String loginName);

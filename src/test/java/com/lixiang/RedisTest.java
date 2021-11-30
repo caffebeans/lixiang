@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * @description:
  * @author: 张亮
@@ -17,6 +19,21 @@ public class RedisTest extends LixiangApplicationTests{
 
     @Test
     void connection() {
+
+        ValueOperations<String, String> jedis = redisTemplate.opsForValue();
+
+        if (jedis.get("key")==null){
+           jedis.increment("key",60);
+        }else {
+
+
+
+
+        }
+
+
+
+
 
 
     }

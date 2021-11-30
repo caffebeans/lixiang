@@ -1,9 +1,7 @@
 package com.lixiang.controller;
 
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
-import com.lixiang.mapper.RoleMapper;
-import com.lixiang.pojo.Role;
-import com.lixiang.pojo.User;
+import com.lixiang.po.Role;
 import com.lixiang.service.RoleService;
 import com.lixiang.vo.ResultCode;
 import com.lixiang.vo.ResultVo;

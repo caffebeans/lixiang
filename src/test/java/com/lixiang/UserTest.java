@@ -1,18 +1,12 @@
 package com.lixiang;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.lixiang.mapper.RoleMapper;
 import com.lixiang.mapper.UserInfoMapper;
 import com.lixiang.mapper.UserMapperr;
-import com.lixiang.pojo.User;
-import com.lixiang.pojo.UserInfo;
-import com.lixiang.vo.ResultCode;
-import com.lixiang.vo.ResultVo;
+import com.lixiang.po.User;
+import com.lixiang.po.UserInfo;
+import com.lixiang.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.List;
 
 /**
  * @description:
@@ -25,6 +19,17 @@ public class UserTest extends LixiangApplicationTests{
      UserInfoMapper userInfoMapper;
      @Autowired
      UserMapperr userMapperr;
+     @Autowired
+    UserService userService;
+
+    @Test
+    void log() {
+
+        User user = new User();
+        user.setLoginName("MarkerHub");
+        userService.login(new User());
+
+    }
 
     @Test
     void name() {

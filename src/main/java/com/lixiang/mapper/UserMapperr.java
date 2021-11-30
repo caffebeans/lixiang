@@ -1,8 +1,7 @@
 package com.lixiang.mapper;
 
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.lixiang.pojo.User;
+import com.lixiang.po.User;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

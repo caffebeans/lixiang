@@ -1,7 +1,7 @@
 package com.lixiang.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.lixiang.pojo.Role;
+import com.lixiang.po.Role;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

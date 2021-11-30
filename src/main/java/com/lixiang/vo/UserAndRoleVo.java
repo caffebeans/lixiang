@@ -1,7 +1,7 @@
 package com.lixiang.vo;
 
-import com.lixiang.pojo.Role;
-import com.lixiang.pojo.UserInfo;
+import com.lixiang.po.Role;
+import com.lixiang.po.UserInfo;
 import io.swagger.annotations.ApiModel;
 import lombok.Data;
 

@@ -39,7 +39,7 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo(){
         return new ApiInfoBuilder()
-                .title("理想汽车项目接口文档")
+                .title("理想汽车项目个人接口文档")
                 .description("理想项目描述")
                 .version("1.0")
                 .build();

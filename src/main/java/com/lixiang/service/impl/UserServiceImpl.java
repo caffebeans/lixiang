@@ -5,15 +5,16 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lixiang.mapper.UserInfoMapper;
 import com.lixiang.mapper.UserRoleMapper;
-import com.lixiang.pojo.Role;
-import com.lixiang.pojo.UserInfo;
-import com.lixiang.pojo.UserRole;
+import com.lixiang.po.Role;
+import com.lixiang.po.UserInfo;
+import com.lixiang.po.UserRole;
 import com.lixiang.vo.UserAndRoleVo;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.authc.UnknownAccountException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.lixiang.mapper.UserMapperr;
-import com.lixiang.pojo.User;
+import com.lixiang.po.User;
 import com.lixiang.service.UserService;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,6 +38,14 @@ public class UserServiceImpl extends ServiceImpl<UserMapperr, User> implements U
     UserInfoMapper userInfoMapper;
     @Autowired
     UserRoleMapper userRoleMapper;
+
+    @Override
+    public User login(User user) {
+
+
+        User res = userMapper.selectOne(new QueryWrapper<>(user));
+        return res;
+    }
 
     @Override
     @Transactional
